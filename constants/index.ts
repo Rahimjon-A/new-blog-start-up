@@ -12,6 +12,7 @@ import {
 	Settings2,
 	User,
 } from 'lucide-react'
+
 import {
 	DiCisco,
 	DiCreativecommonsBadge,
@@ -156,7 +157,7 @@ export const courses = [
 export const categories = [
 	{
 		icon: '/assets/categories/digital-marketing.svg',
-		label: 'Digital Marketing',
+		label: 'Digital Mar	keting',
 	},
 	{ icon: '/assets/categories/web-development.svg', label: 'Web Development' },
 	{ icon: '/assets/categories/graphic-design.svg', label: 'Graphic Design' },

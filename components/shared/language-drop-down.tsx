@@ -12,19 +12,28 @@ import {
 import Image from 'next/image'
 import { lngs } from '@/constants'
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
+import { cn, getCurrentLng } from '@/lib/utils'
 import { useParams } from 'next/navigation'
 
-const LanguageDropDown = () => {
-	const params = useParams()
+interface Props {
+	isMobile?: boolean
+}
 
-	console.log(params)
+const LanguageDropDown = ({ isMobile }: Props) => {
+	const { lng } = useParams()
 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button variant={'ghost'} size={'icon'}>
+				<Button
+					variant={'ghost'}
+					size={'icon'}
+					className={cn(
+						isMobile && 'w-full bg-primary hover:bg-primary/70 h-12'
+					)}
+				>
 					<Languages />
+					{isMobile && <span> {getCurrentLng(lng as string)} </span>}
 				</Button>
 			</DropdownMenuTrigger>
 
@@ -33,7 +42,7 @@ const LanguageDropDown = () => {
 					{lngs.map(item => (
 						<Link key={item.route} href={`${item.route}`}>
 							<DropdownMenuItem
-								className={cn(item.route === params.lng && 'bg-secondary')}
+								className={cn(item.route === lng && 'bg-secondary')}
 							>
 								<Image
 									src={`/assets/locales/${item.route}.png`}
